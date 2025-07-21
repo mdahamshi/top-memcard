@@ -1,8 +1,5 @@
 .gameboard {
-  box-shadow:
-    12px 12px var(--sb-theme-color),
-    0 0 10px var(--sb-theme-color);
-
+  padding: 4px;
   border: 2px solid var(--sb-theme-color);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -18,5 +15,8 @@
 @media screen and (min-width: 700px) {
   .gameboard {
     padding: 2rem;
+    box-shadow:
+      12px 12px var(--sb-theme-color),
+      0 0 10px var(--sb-theme-color);
   }
 }
