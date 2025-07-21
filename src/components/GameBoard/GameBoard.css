@@ -7,6 +7,5 @@
   border: 2px solid var(--sb-theme-color);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  margin: 22px auto;
+  gap: 12px;
 }
