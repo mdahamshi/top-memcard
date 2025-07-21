@@ -1,5 +1,4 @@
 .gameboard {
-  padding: 2rem;
   box-shadow:
     12px 12px var(--sb-theme-color),
     0 0 10px var(--sb-theme-color);
@@ -14,4 +13,10 @@
 
 .gameboard.fade-out {
   opacity: 0;
+}
+
+@media screen and (min-width: 700px) {
+  .gameboard {
+    padding: 2rem;
+  }
 }
