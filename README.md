@@ -1,4 +1,3 @@
-
 # React Base Template ⚛️🚀
 
 A minimal, fast, and modern **React + Vite** starter template — perfect for bootstrapping new front-end projects.
@@ -85,4 +84,3 @@ GitHub: [@mdahamshi](https://github.com/mdahamshi)
 ---
 
 Enjoy building with React + Vite! ⚛️✨
-
