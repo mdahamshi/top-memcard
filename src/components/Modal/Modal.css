@@ -43,7 +43,7 @@
   cursor: pointer;
   padding: 2px 8px;
 }
-svg path {
+.modal-overlay svg path {
   fill: var(--sb-theme-color);
 }
 .modal-title-content {
