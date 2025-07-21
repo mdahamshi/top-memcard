@@ -63,9 +63,8 @@ export default function GameBoard({ onResChange }) {
             </svg>
           </span>
         }
-      >
-        <p>Unfortunately, you clicked this already :(</p>
-      </Modal>
+        children={<p>Unfortunately, you clicked this already :(</p>}
+      />
 
       {roundList.map((poke) => (
         <Card

@@ -1,8 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Modal.css';
 
 export default function Modal({ isOpen, onClose, title, children }) {
-  // Close on ESC key
+  const [showClass, setShowClass] = useState(false);
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => setShowClass(true), 10);
+    } else {
+      setShowClass(false);
+    }
+  }, [isOpen]);
   useEffect(() => {
     function handleKeyDown(e) {
       if (e.key === 'Escape') onClose();
@@ -16,7 +23,10 @@ export default function Modal({ isOpen, onClose, title, children }) {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div
+      className={`modal-overlay ${showClass ? 'show' : ''}`}
+      onClick={onClose}
+    >
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>
           ×

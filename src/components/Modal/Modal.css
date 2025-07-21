@@ -19,8 +19,15 @@
   max-width: 500px;
   width: 90%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-20px);
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out;
 }
-
+.modal-overlay.show .modal-box {
+  opacity: 1;
+  transform: translateY(0);
+}
 .modal-title {
   margin-top: 0;
   font-size: 1.25rem;
