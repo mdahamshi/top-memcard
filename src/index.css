@@ -63,9 +63,10 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-
-button:hover {
-  border-color: var(--sb-theme-color);
+@media (hover: hover) {
+  button:hover {
+    border-color: var(--sb-theme-color);
+  }
 }
 
 button:focus,

@@ -4,8 +4,8 @@ export default function Card({ name, image, onClick }) {
   return (
     <button
       onClick={(e) => {
-        onClick(name);
         e.currentTarget.blur();
+        onClick(name);
       }}
       className="card"
     >
