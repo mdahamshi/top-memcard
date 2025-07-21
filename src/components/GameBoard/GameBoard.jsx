@@ -1,19 +1,31 @@
+import { useEffect, useState } from 'react';
 import './GameBoard.css';
 import Card from '../Card/Card';
 import Modal from '../Modal/Modal';
-import { useState } from 'react';
 import { shuffleArray } from '../../utils/shuffle.js';
-
 import { usePokemonData } from '../../hooks/usePokemonData';
 
 export default function GameBoard({ onResChange }) {
   const { pokemonList, loading } = usePokemonData(22);
   const [clickedCards, setClickedCards] = useState([]);
   const [open, setOpen] = useState(false);
+  const [fade, setFade] = useState(false);
+  const [roundList, setRoundList] = useState([]);
+
+  useEffect(() => {
+    if (!loading && !open) {
+      setFade(true);
+      const timeout = setTimeout(() => {
+        setRoundList(shuffleArray(pokemonList).slice(0, 4));
+        setFade(false);
+      }, 1000);
+      return () => clearTimeout(timeout);
+    } else {
+      setRoundList(shuffleArray(pokemonList).slice(0, 4));
+    }
+  }, [clickedCards, loading, pokemonList]);
 
   const currentScore = clickedCards.length;
-
-  const roundList = shuffleArray(pokemonList).slice(0, 4);
 
   const handleClickedCard = (name) => {
     if (clickedCards.includes(name)) {
@@ -22,8 +34,8 @@ export default function GameBoard({ onResChange }) {
       setOpen(true);
       return;
     }
-    setClickedCards([name, ...clickedCards]);
     onResChange(currentScore + 1);
+    setClickedCards([name, ...clickedCards]);
   };
 
   if (loading)
@@ -34,12 +46,12 @@ export default function GameBoard({ onResChange }) {
     );
 
   return (
-    <div className="gameboard">
+    <div className={`gameboard ${fade ? 'fade-out' : ''}`}>
       <Modal
         isOpen={open}
         onClose={() => setOpen(false)}
         title={
-          <span class="modal-title-content">
+          <span className="modal-title-content">
             Oh Noo !
             <svg
               width={32}
@@ -54,6 +66,7 @@ export default function GameBoard({ onResChange }) {
       >
         <p>Unfortunately, you clicked this already :(</p>
       </Modal>
+
       {roundList.map((poke) => (
         <Card
           key={poke.name}
