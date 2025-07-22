@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import { addCopyRight, generateID, getRandomColor } from '@sarawebs/sb-utils';
+import { addCopyRight } from '@sarawebs/sb-utils';
 
 import Card from './components/Card/Card';
 import Scoreboard from './components/Scoreboard/Scoreboard';
@@ -14,10 +14,6 @@ function App() {
     if (copyRightAdded) return;
     copyRightAdded = true;
     addCopyRight({ title: 'SaraMem' });
-    document.documentElement.style.setProperty(
-      '--sb-theme-color',
-      getRandomColor()
-    );
   }, []);
   const [score, setScore] = useState({ current: 0, best: 0 });
 

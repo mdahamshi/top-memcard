@@ -4,6 +4,7 @@ import Card from '../Card/Card';
 import Modal from '../Modal/Modal';
 import { shuffleArray } from '../../utils/shuffle.js';
 import { usePokemonData } from '../../hooks/usePokemonData';
+import { addCopyRight, generateID, getRandomColor } from '@sarawebs/sb-utils';
 
 export default function GameBoard({ onResChange }) {
   const { pokemonList, loading } = usePokemonData(22);
@@ -19,11 +20,14 @@ export default function GameBoard({ onResChange }) {
         setRoundList(shuffleArray(pokemonList).slice(0, 4));
         setFade(false);
       }, 1000);
+      if (clickedCards.length === 0)
+        document.documentElement.style.setProperty(
+          '--sb-theme-color',
+          getRandomColor()
+        );
       return () => clearTimeout(timeout);
-    } else {
-      setRoundList(shuffleArray(pokemonList).slice(0, 4));
     }
-  }, [clickedCards, loading, pokemonList]);
+  }, [open, clickedCards, loading, pokemonList]);
 
   const currentScore = clickedCards.length;
 
